@@ -40,3 +40,7 @@ img.article-image {
 .index-cards > .mdl-card__actions > .mdl-button {
   color: #fff;
 }
+
+.demo-list-item {
+  width: 500px;
+}
