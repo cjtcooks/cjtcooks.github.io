@@ -1,15 +1,66 @@
 ---
 layout: default
 ---
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<main class="mdl-layout__content">
+    <div class="mdl-grid portfolio-max-width">
+        <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+            
+            <div id="postTitle" class="mdl-card__title">
+                <h1 id="postTitleText" class="mdl-card__title-text">{{page.title}}</h1>
+            </div>
+            
+            <div class="mdl-card__media">
+              {% if page.feature_image_path == nil %}
+              <img class="article-image" src="{{site.baseurl}}images/example.jpg" border="0" alt="">
+              {% else %}
+              <img class="article-image" src="{{site.baseurl}}images/{{page.feature_image_path}}" border="0" alt="">
+              {% endif %}
+            </div>
+            <br>
+            <br>
+            <div id="pageContentText" class="mdl-grid portfolio-copy">
+                <div class="fb-like" data-href="{{site.url}}{{page.url}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+                <br>
+                <br>
+                <p id="pageContentText">{{page.content}}</p>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
-
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
-
-</article>
+    <div class="flex-container">
+      <div class="pagination">
+        {% if page.previous.url %}
+          <button onclick="location.href='{{ page.previous.url }}'" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Old Recipes
+          </button>
+        {% else %}
+          <span class="pagination-item older">
+            <button class="mdl-button mdl-js-button mdl-button--raised" disabled>
+              Old Recipes
+            </button>
+          </span>
+        {% endif %}
+        {% if page.next.url %}
+            <button onclick="location.href='{{ page.next.url }}'" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                  New Recipes
+            </button>
+        {% else %}
+          <span class="pagination-item newer">
+            <button class="mdl-button mdl-js-button mdl-button--raised" disabled>
+              New Recipes
+            </button>
+          </span>
+        {% endif %}
+      </div>
+    </div>
+    <br>
+    <div class="mdl-grid portfolio-max-width">
+        <div id="disqusPlugin" class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+          {% if page.comments %}
+            <div class="fb-comments" data-href="{{site.url}}{{page.url}}" data-numposts="5" data-width="100%"></div>
+          {% endif %}
+        </div>
+      </div>
+</main>
