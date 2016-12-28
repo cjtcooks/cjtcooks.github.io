@@ -1,7 +1,7 @@
 # Setup
 title:               CJT Cooks
 tagline:             Cooking one step at a time
-url:                 http://www.cjtcooks.xyz
+url:                 http://cjtcooks.github.io
 paginate:            6
 paginate_path:       "/recipes/page:num/"
 baseurl:             "/"
